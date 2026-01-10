@@ -7,90 +7,247 @@
   - Environments: .env.local
 
  ✓ Starting...
- ✓ Ready in 1135ms
- ✓ Compiled /middleware in 295ms (232 modules)
+ ✓ Ready in 1291ms
+ ✓ Compiled /middleware in 320ms (232 modules)
  ○ Compiling / ...
- ✓ Compiled / in 1021ms (749 modules)
- GET / 200 in 1148ms
- ✓ Compiled in 70ms (288 modules)
+ ✓ Compiled / in 1206ms (775 modules)
+ ✓ Compiled in 416ms (288 modules)
+ GET / 200 in 1679ms
 <w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (128kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
- ✓ Compiled /_not-found in 109ms (720 modules)
- GET /.well-known/appspecific/com.chrome.devtools.json 404 in 160ms
- ✓ Compiled /login in 206ms (585 modules)
- GET /login 200 in 258ms
- ✓ Compiled /api/auth/[...nextauth] in 36ms (461 modules)
- GET /api/auth/session 200 in 216ms
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /api/auth/[...nextauth] in 624ms (473 modules)
+ GET /api/auth/session 200 in 823ms
+ GET /api/auth/session 200 in 7ms
+ GET /api/auth/session 200 in 7ms
+ GET /api/auth/session 200 in 7ms
+ GET /api/auth/session 200 in 12ms
  GET /api/auth/session 200 in 3ms
- GET /api/auth/session 200 in 2ms
- GET /api/auth/session 200 in 3ms
- ✓ Compiled in 87ms (311 modules)
- ✓ Compiled in 44ms (311 modules)
- ✓ Compiled in 42ms (311 modules)
- ✓ Compiled / in 58ms (443 modules)
- GET / 200 in 162ms
- ✓ Compiled /api/auth/[...nextauth] in 22ms (447 modules)
- GET /api/auth/session 200 in 49ms
- GET /api/auth/session 200 in 3ms
- GET /api/auth/session 200 in 2ms
- GET /api/auth/session 200 in 3ms
- ✓ Compiled in 159ms (758 modules)
- GET /?_rsc=1p60s 200 in 18ms
- GET / 200 in 54ms
- GET /api/auth/session 200 in 4ms
- GET /api/auth/session 200 in 2ms
- GET /api/auth/session 200 in 2ms
- GET /api/auth/session 200 in 2ms
- ✓ Compiled /login in 79ms (473 modules)
- GET /api/auth/providers 200 in 26ms
- GET /api/auth/csrf 200 in 4ms
-prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."password", "public"."User"."skills_offered", "public"."User"."skills_needed", "public"."User"."location", "public"."User"."bio", "public"."User"."avatar", "public"."User"."rating", "public"."User"."is_premium", "public"."User"."last_seen", "public"."User"."is_online", "public"."User"."email", "public"."User"."created_at" FROM "public"."User" WHERE ("public"."User"."username" = $1 AND 1=1) LIMIT $2 OFFSET $3
- POST /api/auth/callback/credentials? 200 in 76ms
- GET /api/auth/session 200 in 3ms
- ✓ Compiled /profile in 316ms (866 modules)
+ ✓ Compiled /profile in 343ms (877 modules)
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."skills_offered", "public"."User"."skills_needed", "public"."User"."location", "public"."User"."bio", "public"."User"."avatar", "public"."User"."rating", "public"."User"."is_premium", "public"."User"."created_at", "public"."User"."last_seen", "public"."User"."is_online" FROM "public"."User" WHERE ("public"."User"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
 prisma:query SELECT COUNT(*) FROM (SELECT "public"."Review"."id" FROM "public"."Review" WHERE "public"."Review"."reviewed_id" = $1 OFFSET $2) AS "sub"
-prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) OFFSET $4
 prisma:query SELECT COUNT(*) FROM (SELECT "public"."Message"."id" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) OFFSET $4) AS "sub"
+prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) OFFSET $4
 Warning: Only plain objects can be passed to Client Components from Server Components. Decimal objects are not supported.
   {id: 1, username: "lrg1763", skillsOffered: ..., skillsNeeded: ..., location: ..., bio: ..., avatar: ..., rating: Decimal, isPremium: ..., createdAt: ..., lastSeen: ..., isOnline: ..., stats: ...}
                                                                                                                     ^^^^^^^
- GET /profile?_rsc=1cdme 200 in 21ms
- ✓ Compiled /search in 128ms (878 modules)
- ✓ Compiled /chats in 226ms (1007 modules)
+ GET /profile?_rsc=17pwy 200 in 38ms
+ ✓ Compiled /search in 115ms (889 modules)
+ ✓ Compiled /chats in 207ms (1017 modules)
 prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id", "public"."Message"."content", "public"."Message"."timestamp", "public"."Message"."is_read", "public"."Message"."is_deleted", "public"."Message"."is_edited", "public"."Message"."edited_at" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) ORDER BY "public"."Message"."timestamp" DESC OFFSET $4
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
 prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE ("public"."Block"."blocker_id" = $1 OR "public"."Block"."blocked_id" = $2) OFFSET $3
- GET /chats?_rsc=1h7xf 200 in 15ms
- ✓ Compiled /api/messages/chats in 49ms (619 modules)
+ GET /chats?_rsc=1h7xf 200 in 12ms
+ ✓ Compiled /api/messages/chats in 48ms (635 modules)
 prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id", "public"."Message"."content", "public"."Message"."timestamp", "public"."Message"."is_read", "public"."Message"."is_deleted", "public"."Message"."is_edited", "public"."Message"."edited_at" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) ORDER BY "public"."Message"."timestamp" DESC OFFSET $4
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
 prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE ("public"."Block"."blocker_id" = $1 OR "public"."Block"."blocked_id" = $2) OFFSET $3
- GET /api/messages/chats 200 in 63ms
+ GET /api/messages/chats 200 in 61ms
 prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id", "public"."Message"."content", "public"."Message"."timestamp", "public"."Message"."is_read", "public"."Message"."is_deleted", "public"."Message"."is_edited", "public"."Message"."edited_at" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) ORDER BY "public"."Message"."timestamp" DESC OFFSET $4
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
 prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE ("public"."Block"."blocker_id" = $1 OR "public"."Block"."blocked_id" = $2) OFFSET $3
  GET /api/messages/chats 200 in 4ms
- ✓ Compiled /favorites in 108ms (1018 modules)
+ ✓ Compiled /favorites in 91ms (1028 modules)
 prisma:query SELECT "public"."Favorite"."id", "public"."Favorite"."user_id", "public"."Favorite"."favorite_id", "public"."Favorite"."created_at" FROM "public"."Favorite" WHERE "public"."Favorite"."user_id" = $1 ORDER BY "public"."Favorite"."created_at" DESC OFFSET $2
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."rating", "public"."User"."location", "public"."User"."skills_offered", "public"."User"."skills_needed", "public"."User"."is_online", "public"."User"."last_seen", "public"."User"."created_at" FROM "public"."User" WHERE "public"."User"."id" IN ($1) OFFSET $2
 Warning: Only plain objects can be passed to Client Components from Server Components. Decimal objects are not supported.
   {id: 2, username: "Vadim", avatar: "", rating: Decimal, location: ..., skillsOffered: ..., skillsNeeded: ..., isOnline: ..., lastSeen: ..., createdAt: ...}
                                                  ^^^^^^^
- GET /favorites?_rsc=gxfv4 200 in 8ms
+ GET /favorites?_rsc=gxfv4 200 in 9ms
+ ✓ Compiled /subscription in 167ms (1040 modules)
+prisma:query SELECT "public"."User"."id", "public"."User"."is_premium" FROM "public"."User" WHERE ("public"."User"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+ GET /subscription?_rsc=d3o3g 200 in 11ms
+ ✓ Compiled /developers in 129ms (1051 modules)
+ GET /api/auth/csrf 200 in 10ms
+ POST /api/auth/signout 200 in 3ms
+ GET / 200 in 44ms
+ GET /api/auth/session 200 in 3ms
+ GET /api/auth/session 200 in 2ms
+ GET /api/auth/session 200 in 3ms
+ GET /api/auth/session 200 in 2ms
+ GET / 200 in 24ms
+ GET /api/auth/session 200 in 3ms
+ GET /api/auth/session 200 in 2ms
+ GET /api/auth/session 200 in 2ms
+ GET /api/auth/session 200 in 2ms
+ ✓ Compiled /login in 324ms (967 modules)
+ GET /api/auth/providers 200 in 27ms
+ GET /api/auth/csrf 200 in 2ms
+prisma:query SELECT 1
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."password", "public"."User"."skills_offered", "public"."User"."skills_needed", "public"."User"."location", "public"."User"."bio", "public"."User"."avatar", "public"."User"."rating", "public"."User"."is_premium", "public"."User"."last_seen", "public"."User"."is_online", "public"."User"."email", "public"."User"."created_at" FROM "public"."User" WHERE ("public"."User"."username" = $1 AND 1=1) LIMIT $2 OFFSET $3
+ POST /api/auth/callback/credentials? 200 in 67ms
+ GET /api/auth/session 200 in 4ms
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."skills_offered", "public"."User"."skills_needed", "public"."User"."location", "public"."User"."bio", "public"."User"."avatar", "public"."User"."rating", "public"."User"."is_premium", "public"."User"."created_at", "public"."User"."last_seen", "public"."User"."is_online" FROM "public"."User" WHERE ("public"."User"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) OFFSET $4
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."Review"."id" FROM "public"."Review" WHERE "public"."Review"."reviewed_id" = $1 OFFSET $2) AS "sub"
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."Message"."id" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) OFFSET $4) AS "sub"
+Warning: Only plain objects can be passed to Client Components from Server Components. Decimal objects are not supported.
+  {id: 1, username: "lrg1763", skillsOffered: ..., skillsNeeded: ..., location: ..., bio: ..., avatar: ..., rating: Decimal, isPremium: ..., createdAt: ..., lastSeen: ..., isOnline: ..., stats: ...}
+                                                                                                                    ^^^^^^^
+ GET /profile?_rsc=1cdme 200 in 19ms
+ ✓ Compiled /search in 57ms (577 modules)
+ ✓ Compiled /api/users/search in 117ms (579 modules)
+prisma:query SELECT 1
+prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id" FROM "public"."Block" WHERE ("public"."Block"."blocker_id" = $1 OR "public"."Block"."blocked_id" = $2) OFFSET $3
+prisma:query SELECT 1
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."rating", "public"."User"."location", "public"."User"."skills_offered", "public"."User"."skills_needed", "public"."User"."is_online", "public"."User"."last_seen", "public"."User"."created_at" FROM "public"."User" WHERE ("public"."User"."id" <> $1 AND 1=1 AND ("public"."User"."username" ILIKE $2 OR "public"."User"."skills_offered" ILIKE $3 OR "public"."User"."skills_needed" ILIKE $4 OR "public"."User"."location" ILIKE $5 OR "public"."User"."bio" ILIKE $6)) ORDER BY "public"."User"."created_at" DESC LIMIT $7 OFFSET $8
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."User"."id" FROM "public"."User" WHERE ("public"."User"."id" <> $1 AND 1=1 AND ("public"."User"."username" ILIKE $2 OR "public"."User"."skills_offered" ILIKE $3 OR "public"."User"."skills_needed" ILIKE $4 OR "public"."User"."location" ILIKE $5 OR "public"."User"."bio" ILIKE $6)) OFFSET $7) AS "sub"
+ GET /api/users/search?query=%D0%B2%D0%B0%D0%B4%D0%B8%D0%BC&sort_by=created_at&sort_order=desc&page=1 200 in 134ms
+prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id" FROM "public"."Block" WHERE ("public"."Block"."blocker_id" = $1 OR "public"."Block"."blocked_id" = $2) OFFSET $3
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."User"."id" FROM "public"."User" WHERE ("public"."User"."id" <> $1 AND 1=1 AND ("public"."User"."username" ILIKE $2 OR "public"."User"."skills_offered" ILIKE $3 OR "public"."User"."skills_needed" ILIKE $4 OR "public"."User"."location" ILIKE $5 OR "public"."User"."bio" ILIKE $6)) OFFSET $7) AS "sub"
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."rating", "public"."User"."location", "public"."User"."skills_offered", "public"."User"."skills_needed", "public"."User"."is_online", "public"."User"."last_seen", "public"."User"."created_at" FROM "public"."User" WHERE ("public"."User"."id" <> $1 AND 1=1 AND ("public"."User"."username" ILIKE $2 OR "public"."User"."skills_offered" ILIKE $3 OR "public"."User"."skills_needed" ILIKE $4 OR "public"."User"."location" ILIKE $5 OR "public"."User"."bio" ILIKE $6)) ORDER BY "public"."User"."created_at" DESC LIMIT $7 OFFSET $8
+ GET /api/users/search?query=v&sort_by=created_at&sort_order=desc&page=1 200 in 10ms
+ ✓ Compiled /match/[userId] in 157ms (994 modules)
+prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE (("public"."Block"."blocker_id" = $1 AND "public"."Block"."blocked_id" = $2) OR ("public"."Block"."blocker_id" = $3 AND "public"."Block"."blocked_id" = $4)) LIMIT $5 OFFSET $6
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."skills_offered", "public"."User"."skills_needed", "public"."User"."location", "public"."User"."bio", "public"."User"."avatar", "public"."User"."rating", "public"."User"."is_premium", "public"."User"."created_at", "public"."User"."last_seen", "public"."User"."is_online" FROM "public"."User" WHERE ("public"."User"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."User"."id", "public"."User"."skills_offered", "public"."User"."skills_needed" FROM "public"."User" WHERE ("public"."User"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) OFFSET $4
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."Review"."id" FROM "public"."Review" WHERE "public"."Review"."reviewed_id" = $1 OFFSET $2) AS "sub"
+prisma:query SELECT 1
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."Message"."id" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) OFFSET $4) AS "sub"
+prisma:query SELECT "public"."Favorite"."id", "public"."Favorite"."user_id", "public"."Favorite"."favorite_id", "public"."Favorite"."created_at" FROM "public"."Favorite" WHERE (("public"."Favorite"."user_id" = $1 AND "public"."Favorite"."favorite_id" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE (("public"."Block"."blocker_id" = $1 AND "public"."Block"."blocked_id" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query SELECT "public"."Review"."id", "public"."Review"."reviewer_id", "public"."Review"."reviewed_id", "public"."Review"."rating", "public"."Review"."comment", "public"."Review"."created_at" FROM "public"."Review" WHERE (("public"."Review"."reviewer_id" = $1 AND "public"."Review"."reviewed_id" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query SELECT "public"."Review"."id", "public"."Review"."reviewer_id", "public"."Review"."reviewed_id", "public"."Review"."rating", "public"."Review"."comment", "public"."Review"."created_at" FROM "public"."Review" WHERE "public"."Review"."reviewed_id" = $1 ORDER BY "public"."Review"."created_at" DESC LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar" FROM "public"."User" WHERE "public"."User"."id" IN ($1) OFFSET $2
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."Review"."id" FROM "public"."Review" WHERE "public"."Review"."reviewed_id" = $1 OFFSET $2) AS "sub"
+Warning: Only plain objects can be passed to Client Components from Server Components. Decimal objects are not supported.
+  {id: 2, username: "Vadim", skillsOffered: ..., skillsNeeded: ..., location: ..., bio: ..., avatar: ..., rating: Decimal, isPremium: ..., createdAt: ..., lastSeen: ..., isOnline: ..., stats: ..., skillsMatches: ..., isFavorite: ..., isBlocked: ..., existingReview: ..., reviews: ..., reviewsPagination: ...}
+                                                                                                                  ^^^^^^^
+Warning: Only plain objects can be passed to Client Components from Server Components. Decimal objects are not supported.
+  {id: 2, rating: Decimal, comment: ..., createdAt: ..., reviewer: ...}
+                  ^^^^^^^
+ GET /match/2?_rsc=6tfzx 200 in 16ms
+ ✓ Compiled /api/reviews in 62ms (593 modules)
+prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE (("public"."Block"."blocker_id" = $1 AND "public"."Block"."blocked_id" = $2) OR ("public"."Block"."blocker_id" = $3 AND "public"."Block"."blocked_id" = $4)) LIMIT $5 OFFSET $6
+prisma:query SELECT "public"."Review"."id", "public"."Review"."reviewer_id", "public"."Review"."reviewed_id", "public"."Review"."rating", "public"."Review"."comment", "public"."Review"."created_at" FROM "public"."Review" WHERE (("public"."Review"."reviewer_id" = $1 AND "public"."Review"."reviewed_id" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query UPDATE "public"."Review" SET "rating" = $1, "comment" = $2 WHERE ("public"."Review"."id" = $3 AND 1=1) RETURNING "public"."Review"."id", "public"."Review"."reviewer_id", "public"."Review"."reviewed_id", "public"."Review"."rating", "public"."Review"."comment", "public"."Review"."created_at"
+prisma:query SELECT "public"."Review"."id", "public"."Review"."rating" FROM "public"."Review" WHERE "public"."Review"."reviewed_id" = $1 OFFSET $2
+prisma:query UPDATE "public"."User" SET "rating" = $1 WHERE ("public"."User"."id" = $2 AND 1=1) RETURNING "public"."User"."id", "public"."User"."username", "public"."User"."password", "public"."User"."skills_offered", "public"."User"."skills_needed", "public"."User"."location", "public"."User"."bio", "public"."User"."avatar", "public"."User"."rating", "public"."User"."is_premium", "public"."User"."last_seen", "public"."User"."is_online", "public"."User"."email", "public"."User"."created_at"
+ POST /api/reviews 200 in 81ms
+prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE (("public"."Block"."blocker_id" = $1 AND "public"."Block"."blocked_id" = $2) OR ("public"."Block"."blocker_id" = $3 AND "public"."Block"."blocked_id" = $4)) LIMIT $5 OFFSET $6
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."skills_offered", "public"."User"."skills_needed", "public"."User"."location", "public"."User"."bio", "public"."User"."avatar", "public"."User"."rating", "public"."User"."is_premium", "public"."User"."created_at", "public"."User"."last_seen", "public"."User"."is_online" FROM "public"."User" WHERE ("public"."User"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."User"."id", "public"."User"."skills_offered", "public"."User"."skills_needed" FROM "public"."User" WHERE ("public"."User"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) OFFSET $4
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."Review"."id" FROM "public"."Review" WHERE "public"."Review"."reviewed_id" = $1 OFFSET $2) AS "sub"
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."Message"."id" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) OFFSET $4) AS "sub"
+prisma:query SELECT "public"."Favorite"."id", "public"."Favorite"."user_id", "public"."Favorite"."favorite_id", "public"."Favorite"."created_at" FROM "public"."Favorite" WHERE (("public"."Favorite"."user_id" = $1 AND "public"."Favorite"."favorite_id" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE (("public"."Block"."blocker_id" = $1 AND "public"."Block"."blocked_id" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query SELECT "public"."Review"."id", "public"."Review"."reviewer_id", "public"."Review"."reviewed_id", "public"."Review"."rating", "public"."Review"."comment", "public"."Review"."created_at" FROM "public"."Review" WHERE (("public"."Review"."reviewer_id" = $1 AND "public"."Review"."reviewed_id" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query SELECT "public"."Review"."id", "public"."Review"."reviewer_id", "public"."Review"."reviewed_id", "public"."Review"."rating", "public"."Review"."comment", "public"."Review"."created_at" FROM "public"."Review" WHERE "public"."Review"."reviewed_id" = $1 ORDER BY "public"."Review"."created_at" DESC LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar" FROM "public"."User" WHERE "public"."User"."id" IN ($1) OFFSET $2
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."Review"."id" FROM "public"."Review" WHERE "public"."Review"."reviewed_id" = $1 OFFSET $2) AS "sub"
+Warning: Only plain objects can be passed to Client Components from Server Components. Decimal objects are not supported.
+  {id: 2, username: "Vadim", skillsOffered: ..., skillsNeeded: ..., location: ..., bio: ..., avatar: ..., rating: Decimal, isPremium: ..., createdAt: ..., lastSeen: ..., isOnline: ..., stats: ..., skillsMatches: ..., isFavorite: ..., isBlocked: ..., existingReview: ..., reviews: ..., reviewsPagination: ...}
+                                                                                                                  ^^^^^^^
+Warning: Only plain objects can be passed to Client Components from Server Components. Decimal objects are not supported.
+  {id: 2, rating: Decimal, comment: ..., createdAt: ..., reviewer: ...}
+                  ^^^^^^^
+ GET /match/2?_rsc=8i90h 200 in 13ms
+prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE (("public"."Block"."blocker_id" = $1 AND "public"."Block"."blocked_id" = $2) OR ("public"."Block"."blocker_id" = $3 AND "public"."Block"."blocked_id" = $4)) LIMIT $5 OFFSET $6
+prisma:query SELECT "public"."Review"."id", "public"."Review"."reviewer_id", "public"."Review"."reviewed_id", "public"."Review"."rating", "public"."Review"."comment", "public"."Review"."created_at" FROM "public"."Review" WHERE (("public"."Review"."reviewer_id" = $1 AND "public"."Review"."reviewed_id" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query UPDATE "public"."Review" SET "rating" = $1, "comment" = $2 WHERE ("public"."Review"."id" = $3 AND 1=1) RETURNING "public"."Review"."id", "public"."Review"."reviewer_id", "public"."Review"."reviewed_id", "public"."Review"."rating", "public"."Review"."comment", "public"."Review"."created_at"
+prisma:query SELECT "public"."Review"."id", "public"."Review"."rating" FROM "public"."Review" WHERE "public"."Review"."reviewed_id" = $1 OFFSET $2
+prisma:query UPDATE "public"."User" SET "rating" = $1 WHERE ("public"."User"."id" = $2 AND 1=1) RETURNING "public"."User"."id", "public"."User"."username", "public"."User"."password", "public"."User"."skills_offered", "public"."User"."skills_needed", "public"."User"."location", "public"."User"."bio", "public"."User"."avatar", "public"."User"."rating", "public"."User"."is_premium", "public"."User"."last_seen", "public"."User"."is_online", "public"."User"."email", "public"."User"."created_at"
+ POST /api/reviews 200 in 12ms
+prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE (("public"."Block"."blocker_id" = $1 AND "public"."Block"."blocked_id" = $2) OR ("public"."Block"."blocker_id" = $3 AND "public"."Block"."blocked_id" = $4)) LIMIT $5 OFFSET $6
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."skills_offered", "public"."User"."skills_needed", "public"."User"."location", "public"."User"."bio", "public"."User"."avatar", "public"."User"."rating", "public"."User"."is_premium", "public"."User"."created_at", "public"."User"."last_seen", "public"."User"."is_online" FROM "public"."User" WHERE ("public"."User"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."User"."id", "public"."User"."skills_offered", "public"."User"."skills_needed" FROM "public"."User" WHERE ("public"."User"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."Review"."id" FROM "public"."Review" WHERE "public"."Review"."reviewed_id" = $1 OFFSET $2) AS "sub"
+prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) OFFSET $4
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."Message"."id" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) OFFSET $4) AS "sub"
+prisma:query SELECT "public"."Favorite"."id", "public"."Favorite"."user_id", "public"."Favorite"."favorite_id", "public"."Favorite"."created_at" FROM "public"."Favorite" WHERE (("public"."Favorite"."user_id" = $1 AND "public"."Favorite"."favorite_id" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE (("public"."Block"."blocker_id" = $1 AND "public"."Block"."blocked_id" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query SELECT "public"."Review"."id", "public"."Review"."reviewer_id", "public"."Review"."reviewed_id", "public"."Review"."rating", "public"."Review"."comment", "public"."Review"."created_at" FROM "public"."Review" WHERE (("public"."Review"."reviewer_id" = $1 AND "public"."Review"."reviewed_id" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query SELECT "public"."Review"."id", "public"."Review"."reviewer_id", "public"."Review"."reviewed_id", "public"."Review"."rating", "public"."Review"."comment", "public"."Review"."created_at" FROM "public"."Review" WHERE "public"."Review"."reviewed_id" = $1 ORDER BY "public"."Review"."created_at" DESC LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar" FROM "public"."User" WHERE "public"."User"."id" IN ($1) OFFSET $2
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."Review"."id" FROM "public"."Review" WHERE "public"."Review"."reviewed_id" = $1 OFFSET $2) AS "sub"
+Warning: Only plain objects can be passed to Client Components from Server Components. Decimal objects are not supported.
+  {id: 2, username: "Vadim", skillsOffered: ..., skillsNeeded: ..., location: ..., bio: ..., avatar: ..., rating: Decimal, isPremium: ..., createdAt: ..., lastSeen: ..., isOnline: ..., stats: ..., skillsMatches: ..., isFavorite: ..., isBlocked: ..., existingReview: ..., reviews: ..., reviewsPagination: ...}
+                                                                                                                  ^^^^^^^
+Warning: Only plain objects can be passed to Client Components from Server Components. Decimal objects are not supported.
+  {id: 2, rating: Decimal, comment: ..., createdAt: ..., reviewer: ...}
+                  ^^^^^^^
+ GET /match/2?_rsc=8i90h 200 in 11ms
+prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE (("public"."Block"."blocker_id" = $1 AND "public"."Block"."blocked_id" = $2) OR ("public"."Block"."blocker_id" = $3 AND "public"."Block"."blocked_id" = $4)) LIMIT $5 OFFSET $6
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."skills_offered", "public"."User"."skills_needed", "public"."User"."location", "public"."User"."bio", "public"."User"."avatar", "public"."User"."rating", "public"."User"."is_premium", "public"."User"."created_at", "public"."User"."last_seen", "public"."User"."is_online" FROM "public"."User" WHERE ("public"."User"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."User"."id", "public"."User"."skills_offered", "public"."User"."skills_needed" FROM "public"."User" WHERE ("public"."User"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) OFFSET $4
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."Review"."id" FROM "public"."Review" WHERE "public"."Review"."reviewed_id" = $1 OFFSET $2) AS "sub"
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."Message"."id" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) OFFSET $4) AS "sub"
+prisma:query SELECT "public"."Favorite"."id", "public"."Favorite"."user_id", "public"."Favorite"."favorite_id", "public"."Favorite"."created_at" FROM "public"."Favorite" WHERE (("public"."Favorite"."user_id" = $1 AND "public"."Favorite"."favorite_id" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE (("public"."Block"."blocker_id" = $1 AND "public"."Block"."blocked_id" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query SELECT "public"."Review"."id", "public"."Review"."reviewer_id", "public"."Review"."reviewed_id", "public"."Review"."rating", "public"."Review"."comment", "public"."Review"."created_at" FROM "public"."Review" WHERE (("public"."Review"."reviewer_id" = $1 AND "public"."Review"."reviewed_id" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query SELECT "public"."Review"."id", "public"."Review"."reviewer_id", "public"."Review"."reviewed_id", "public"."Review"."rating", "public"."Review"."comment", "public"."Review"."created_at" FROM "public"."Review" WHERE "public"."Review"."reviewed_id" = $1 ORDER BY "public"."Review"."created_at" DESC LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar" FROM "public"."User" WHERE "public"."User"."id" IN ($1) OFFSET $2
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."Review"."id" FROM "public"."Review" WHERE "public"."Review"."reviewed_id" = $1 OFFSET $2) AS "sub"
+Warning: Only plain objects can be passed to Client Components from Server Components. Decimal objects are not supported.
+  {id: 2, username: "Vadim", skillsOffered: ..., skillsNeeded: ..., location: ..., bio: ..., avatar: ..., rating: Decimal, isPremium: ..., createdAt: ..., lastSeen: ..., isOnline: ..., stats: ..., skillsMatches: ..., isFavorite: ..., isBlocked: ..., existingReview: ..., reviews: ..., reviewsPagination: ...}
+                                                                                                                  ^^^^^^^
+Warning: Only plain objects can be passed to Client Components from Server Components. Decimal objects are not supported.
+  {id: 2, rating: Decimal, comment: ..., createdAt: ..., reviewer: ...}
+                  ^^^^^^^
+ GET /match/2 200 in 73ms
+ GET /api/auth/session 200 in 6ms
+ GET /api/auth/session 200 in 3ms
+ GET /api/auth/session 200 in 2ms
+ GET /api/auth/session 200 in 4ms
+ GET /api/auth/session 200 in 10ms
+ GET /api/auth/session 200 in 4ms
+prisma:query SELECT 1
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."skills_offered", "public"."User"."skills_needed", "public"."User"."location", "public"."User"."bio", "public"."User"."avatar", "public"."User"."rating", "public"."User"."is_premium", "public"."User"."created_at", "public"."User"."last_seen", "public"."User"."is_online" FROM "public"."User" WHERE ("public"."User"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT 1
+prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) OFFSET $4
+prisma:query SELECT 1
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."Message"."id" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) OFFSET $4) AS "sub"
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."Review"."id" FROM "public"."Review" WHERE "public"."Review"."reviewed_id" = $1 OFFSET $2) AS "sub"
+Warning: Only plain objects can be passed to Client Components from Server Components. Decimal objects are not supported.
+  {id: 1, username: "lrg1763", skillsOffered: ..., skillsNeeded: ..., location: ..., bio: ..., avatar: ..., rating: Decimal, isPremium: ..., createdAt: ..., lastSeen: ..., isOnline: ..., stats: ...}
+                                                                                                                    ^^^^^^^
+ GET /profile?_rsc=qihu9 200 in 16ms
+ ✓ Compiled /chats in 110ms (662 modules)
 prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id", "public"."Message"."content", "public"."Message"."timestamp", "public"."Message"."is_read", "public"."Message"."is_deleted", "public"."Message"."is_edited", "public"."Message"."edited_at" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) ORDER BY "public"."Message"."timestamp" DESC OFFSET $4
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
 prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE ("public"."Block"."blocker_id" = $1 OR "public"."Block"."blocked_id" = $2) OFFSET $3
- GET /api/messages/chats 200 in 14ms
+ GET /chats?_rsc=1h7xf 200 in 14ms
+ ✓ Compiled /api/messages/chats in 104ms (664 modules)
+prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id", "public"."Message"."content", "public"."Message"."timestamp", "public"."Message"."is_read", "public"."Message"."is_deleted", "public"."Message"."is_edited", "public"."Message"."edited_at" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) ORDER BY "public"."Message"."timestamp" DESC OFFSET $4
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
+ GET /api/messages/chats 200 in 122ms
+prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE ("public"."Block"."blocker_id" = $1 OR "public"."Block"."blocked_id" = $2) OFFSET $3
+prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id", "public"."Message"."content", "public"."Message"."timestamp", "public"."Message"."is_read", "public"."Message"."is_deleted", "public"."Message"."is_edited", "public"."Message"."edited_at" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) ORDER BY "public"."Message"."timestamp" DESC OFFSET $4
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
+ GET /api/messages/chats 200 in 6ms
+prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE ("public"."Block"."blocker_id" = $1 OR "public"."Block"."blocked_id" = $2) OFFSET $3
+prisma:query SELECT "public"."Favorite"."id", "public"."Favorite"."user_id", "public"."Favorite"."favorite_id", "public"."Favorite"."created_at" FROM "public"."Favorite" WHERE "public"."Favorite"."user_id" = $1 ORDER BY "public"."Favorite"."created_at" DESC OFFSET $2
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."rating", "public"."User"."location", "public"."User"."skills_offered", "public"."User"."skills_needed", "public"."User"."is_online", "public"."User"."last_seen", "public"."User"."created_at" FROM "public"."User" WHERE "public"."User"."id" IN ($1) OFFSET $2
+Warning: Only plain objects can be passed to Client Components from Server Components. Decimal objects are not supported.
+  {id: 2, username: "Vadim", avatar: "", rating: Decimal, location: ..., skillsOffered: ..., skillsNeeded: ..., isOnline: ..., lastSeen: ..., createdAt: ...}
+                                                 ^^^^^^^
+ GET /favorites?_rsc=gxfv4 200 in 13ms
+prisma:query SELECT "public"."User"."id", "public"."User"."is_premium" FROM "public"."User" WHERE ("public"."User"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+ GET /subscription?_rsc=d3o3g 200 in 10ms
+prisma:query SELECT 1
 prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id", "public"."Message"."content", "public"."Message"."timestamp", "public"."Message"."is_read", "public"."Message"."is_deleted", "public"."Message"."is_edited", "public"."Message"."edited_at" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) ORDER BY "public"."Message"."timestamp" DESC OFFSET $4
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
 prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE ("public"."Block"."blocker_id" = $1 OR "public"."Block"."blocked_id" = $2) OFFSET $3
- GET /api/messages/chats 200 in 8ms
- ✓ Compiled /chats/[userId] in 97ms (1020 modules)
+ GET /api/messages/chats 200 in 11ms
+prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id", "public"."Message"."content", "public"."Message"."timestamp", "public"."Message"."is_read", "public"."Message"."is_deleted", "public"."Message"."is_edited", "public"."Message"."edited_at" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) ORDER BY "public"."Message"."timestamp" DESC OFFSET $4
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
+prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE ("public"."Block"."blocker_id" = $1 OR "public"."Block"."blocked_id" = $2) OFFSET $3
+ GET /api/messages/chats 200 in 5ms
+ ✓ Compiled /chats/[userId] in 149ms (1067 modules)
 prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE (("public"."Block"."blocker_id" = $1 AND "public"."Block"."blocked_id" = $2) OR ("public"."Block"."blocker_id" = $3 AND "public"."Block"."blocked_id" = $4)) LIMIT $5 OFFSET $6
 prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id", "public"."Message"."content", "public"."Message"."timestamp", "public"."Message"."is_read", "public"."Message"."is_deleted", "public"."Message"."is_edited", "public"."Message"."edited_at" FROM "public"."Message" WHERE ((("public"."Message"."sender_id" = $1 AND "public"."Message"."receiver_id" = $2) OR ("public"."Message"."sender_id" = $3 AND "public"."Message"."receiver_id" = $4)) AND "public"."Message"."is_deleted" = $5) ORDER BY "public"."Message"."timestamp" ASC OFFSET $6
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
@@ -102,18 +259,18 @@ prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "pu
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
 prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE ("public"."Block"."blocker_id" = $1 OR "public"."Block"."blocked_id" = $2) OFFSET $3
- GET /chats/2?_rsc=1rbcr 200 in 12ms
- ✓ Compiled /api/messages/chat/[userId] in 52ms (629 modules)
+ GET /chats/2?_rsc=1rbcr 200 in 15ms
+prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id", "public"."Message"."content", "public"."Message"."timestamp", "public"."Message"."is_read", "public"."Message"."is_deleted", "public"."Message"."is_edited", "public"."Message"."edited_at" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) ORDER BY "public"."Message"."timestamp" DESC OFFSET $4
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
+ GET /api/messages/chats 200 in 15ms
+prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE ("public"."Block"."blocker_id" = $1 OR "public"."Block"."blocked_id" = $2) OFFSET $3
+ ✓ Compiled /api/messages/chat/[userId] in 73ms (666 modules)
 prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id", "public"."Message"."content", "public"."Message"."timestamp", "public"."Message"."is_read", "public"."Message"."is_deleted", "public"."Message"."is_edited", "public"."Message"."edited_at" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) ORDER BY "public"."Message"."timestamp" DESC OFFSET $4
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
 prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE ("public"."Block"."blocker_id" = $1 OR "public"."Block"."blocked_id" = $2) OFFSET $3
- GET /api/messages/chats 200 in 118ms
-prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id", "public"."Message"."content", "public"."Message"."timestamp", "public"."Message"."is_read", "public"."Message"."is_deleted", "public"."Message"."is_edited", "public"."Message"."edited_at" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) ORDER BY "public"."Message"."timestamp" DESC OFFSET $4
-prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
-prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
-prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE ("public"."Block"."blocker_id" = $1 OR "public"."Block"."blocked_id" = $2) OFFSET $3
- GET /api/messages/chats 200 in 4ms
+ GET /api/messages/chats 200 in 134ms
 prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id", "public"."Message"."content", "public"."Message"."timestamp", "public"."Message"."is_read", "public"."Message"."is_deleted", "public"."Message"."is_edited", "public"."Message"."edited_at" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) ORDER BY "public"."Message"."timestamp" DESC OFFSET $4
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
@@ -126,7 +283,7 @@ prisma:query BEGIN
 prisma:query UPDATE "public"."Message" SET "is_read" = $1 WHERE ("public"."Message"."sender_id" = $2 AND "public"."Message"."receiver_id" = $3 AND "public"."Message"."is_read" = $4)
 prisma:query COMMIT
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE ("public"."User"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
- GET /api/messages/chat/2 200 in 251ms
+ GET /api/messages/chat/2 200 in 293ms
 prisma:query SELECT "public"."Block"."id", "public"."Block"."blocker_id", "public"."Block"."blocked_id", "public"."Block"."created_at" FROM "public"."Block" WHERE (("public"."Block"."blocker_id" = $1 AND "public"."Block"."blocked_id" = $2) OR ("public"."Block"."blocker_id" = $3 AND "public"."Block"."blocked_id" = $4)) LIMIT $5 OFFSET $6
 prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id", "public"."Message"."content", "public"."Message"."timestamp", "public"."Message"."is_read", "public"."Message"."is_deleted", "public"."Message"."is_edited", "public"."Message"."edited_at" FROM "public"."Message" WHERE ((("public"."Message"."sender_id" = $1 AND "public"."Message"."receiver_id" = $2) OR ("public"."Message"."sender_id" = $3 AND "public"."Message"."receiver_id" = $4)) AND "public"."Message"."is_deleted" = $5) ORDER BY "public"."Message"."timestamp" ASC OFFSET $6
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar" FROM "public"."User" WHERE "public"."User"."id" IN ($1,$2) OFFSET $3
@@ -135,5 +292,20 @@ prisma:query UPDATE "public"."Message" SET "is_read" = $1 WHERE ("public"."Messa
 prisma:query COMMIT
 prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."avatar", "public"."User"."is_online", "public"."User"."last_seen" FROM "public"."User" WHERE ("public"."User"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
  GET /api/messages/chat/2 200 in 5ms
- GET /api/auth/session 200 in 16ms
+prisma:query SELECT "public"."User"."id", "public"."User"."username", "public"."User"."skills_offered", "public"."User"."skills_needed", "public"."User"."location", "public"."User"."bio", "public"."User"."avatar", "public"."User"."rating", "public"."User"."is_premium", "public"."User"."created_at", "public"."User"."last_seen", "public"."User"."is_online" FROM "public"."User" WHERE ("public"."User"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."Review"."id" FROM "public"."Review" WHERE "public"."Review"."reviewed_id" = $1 OFFSET $2) AS "sub"
+prisma:query SELECT COUNT(*) FROM (SELECT "public"."Message"."id" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) OFFSET $4) AS "sub"
+prisma:query SELECT "public"."Message"."id", "public"."Message"."sender_id", "public"."Message"."receiver_id" FROM "public"."Message" WHERE (("public"."Message"."sender_id" = $1 OR "public"."Message"."receiver_id" = $2) AND "public"."Message"."is_deleted" = $3) OFFSET $4
+Warning: Only plain objects can be passed to Client Components from Server Components. Decimal objects are not supported.
+  {id: 1, username: "lrg1763", skillsOffered: ..., skillsNeeded: ..., location: ..., bio: ..., avatar: ..., rating: Decimal, isPremium: ..., createdAt: ..., lastSeen: ..., isOnline: ..., stats: ...}
+                                                                                                                    ^^^^^^^
+ GET /profile?_rsc=123p4 200 in 17ms
+ ✓ Compiled /developers in 69ms (674 modules)
+ GET /api/auth/session 200 in 15ms
  GET /api/auth/session 200 in 4ms
+ GET /api/auth/session 200 in 8ms
+ GET /api/auth/session 200 in 4ms
+ GET /api/auth/session 200 in 11ms
+ GET /api/auth/session 200 in 5ms

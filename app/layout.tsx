@@ -22,6 +22,25 @@ const onyxSemiMonoBlack = localFont({
 export const metadata: Metadata = {
   title: 'SkillSwap - Обмен навыками',
   description: 'Платформа для peer-to-peer обмена навыками и услугами',
+  icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
+    other: [
+      {
+        rel: 'icon',
+        url: '/favicon.ico',
+      },
+    ],
+  },
+  manifest: '/site.webmanifest',
+  appleWebApp: {
+    capable: true,
+    title: 'SkillSwap',
+    statusBarStyle: 'default',
+  },
 }
 
 export default function RootLayout({
