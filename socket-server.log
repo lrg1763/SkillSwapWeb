@@ -1,0 +1,16 @@
+Socket.IO server running on port 3001
+User 1 connected
+User 1 disconnected
+User 1 connected
+User 1 disconnected
+User 1 connected
+User 1 connected
+Received send_message event: { userId: 1, data: { receiver_id: 2, message: 'тити' } }
+Processing message: { senderId: 1, receiver_id: 2, messageLength: 4 }
+Message validation passed, checking blocks...
+Creating message in DB...
+Message created in DB: { messageId: 12, senderId: 1, receiverId: 2 }
+Sending message to receiver room: user_2
+Sending confirmation to sender
+User 1 disconnected
+User 1 disconnected

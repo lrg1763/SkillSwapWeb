@@ -41,3 +41,6 @@ next-env.d.ts
 # uploads
 /public/uploads/avatars/*
 !/public/uploads/avatars/.gitkeep
+
+# cursor
+.cursor/

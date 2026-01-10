@@ -1,0 +1,13 @@
+{
+  "files.exclude": {
+    "**/.cursor": true,
+    "**/.cursor/**": true
+  },
+  "files.watcherExclude": {
+    "**/.cursor/**": true
+  },
+  "search.exclude": {
+    "**/.cursor": true,
+    "**/.cursor/**": true
+  }
+}

@@ -5,6 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "dev:socket": "node socket-server/index.js",
+    "dev:full": "./start-full.sh",
+    "start:full": "./start-full.sh",
+    "stop": "./stop.sh",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
