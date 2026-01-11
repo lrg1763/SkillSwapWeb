@@ -2,7 +2,9 @@
 
 import Link from 'next/link'
 import Accordion from '@/components/ui/Accordion'
-import { Star, Sparkles, Shield, Zap } from 'lucide-react'
+import { Star, Sparkles, Shield, Zap, UserPlus, Search, MessageCircle } from 'lucide-react'
+import Header from './Header'
+import Footer from './Footer'
 
 interface HomePageClientProps {
   isAuthenticated: boolean
@@ -64,17 +66,16 @@ export default function HomePageClient({ isAuthenticated }: HomePageClientProps)
 
   return (
     <main className="min-h-screen bg-primary-white">
+      {!isAuthenticated && <Header />}
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-onyx-black mb-6">
-            Добро пожаловать в SkillSwap!
+            Бартерный обмен —<br />удобно и легко!
           </h1>
           {!isAuthenticated && (
             <p className="text-lg md:text-xl text-primary-gray-text mb-8 max-w-2xl mx-auto">
-              <strong>SkillSwap</strong> — это инновационная P2P-платформа для бартерного обмена
-              навыками и услугами. Предлагайте свои умения, находите нужных специалистов и
-              обменивайтесь опытом без денег!
+              SkillSwap — это инновационная платформа для бартерного обмена навыками и услугами. Предлагайте свои умения, находите нужных специалистов и обменивайтесь опытом без денег!
             </p>
           )}
 
@@ -98,16 +99,16 @@ export default function HomePageClient({ isAuthenticated }: HomePageClientProps)
             ) : (
               <>
                 <Link
-                  href="/register"
-                  className="px-8 py-4 bg-primary-black text-primary-white font-onyx-black rounded-lg hover:opacity-90 transition-opacity text-lg"
-                >
-                  Регистрация
-                </Link>
-                <Link
                   href="/login"
-                  className="px-8 py-4 border-2 border-primary-black text-primary-black font-onyx-black rounded-lg hover:bg-primary-gray-light transition-colors text-lg"
+                  className="px-6 py-3 border border-primary-black text-primary-black font-onyx-regular rounded hover:bg-primary-gray-light transition-colors text-lg"
                 >
                   Вход
+                </Link>
+                <Link
+                  href="/register"
+                  className="px-6 py-3 bg-primary-black text-primary-white font-onyx-regular rounded hover:opacity-90 transition-opacity text-lg"
+                >
+                  Регистрация
                 </Link>
               </>
             )}
@@ -117,30 +118,66 @@ export default function HomePageClient({ isAuthenticated }: HomePageClientProps)
 
       {/* Features Grid - только для неавторизованных */}
       {!isAuthenticated && (
-        <section className="container mx-auto px-4 py-16 border-t-2 border-primary-gray-medium">
+        <section id="features" className="container mx-auto px-4 py-16 border-t-2 border-primary-gray-medium">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="p-6 border-2 border-primary-gray-medium rounded-lg bg-primary-white hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-onyx-black mb-3">Регистрация</h3>
-                <p className="text-primary-gray-text font-onyx-regular">
+              {/* Регистрация */}
+              <div className="px-6 pt-6 pb-20 rounded-lg hover:shadow-lg transition-shadow max-w-xs mx-auto lg:mx-0" style={{ backgroundColor: 'rgb(254, 130, 229)' }}>
+                <div className="flex items-start gap-0 mb-6">
+                  <div className="w-14 h-14 rounded-full bg-primary-black flex items-center justify-center text-primary-white font-onyx-regular text-xl">
+                    1
+                  </div>
+                  <div className="w-14 h-14 rounded-full bg-primary-black flex items-center justify-center">
+                    <UserPlus className="h-7 w-7 text-primary-white" strokeWidth={1} />
+                  </div>
+                </div>
+                <h3 className="text-xl font-onyx-black mb-3 text-primary-black">Регистрация</h3>
+                <p className="text-primary-black font-onyx-regular">
                   Создайте профиль, укажите свои навыки и потребности
                 </p>
               </div>
-              <div className="p-6 border-2 border-primary-gray-medium rounded-lg bg-primary-white hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-onyx-black mb-3">Поиск</h3>
-                <p className="text-primary-gray-text font-onyx-regular">
+              {/* Поиск */}
+              <div className="px-6 pt-6 pb-20 rounded-lg hover:shadow-lg transition-shadow max-w-xs mx-auto lg:mx-0" style={{ backgroundColor: 'rgb(0, 254, 135)' }}>
+                <div className="flex items-start gap-0 mb-6">
+                  <div className="w-14 h-14 rounded-full bg-primary-black flex items-center justify-center text-primary-white font-onyx-regular text-xl">
+                    2
+                  </div>
+                  <div className="w-14 h-14 rounded-full bg-primary-black flex items-center justify-center">
+                    <Search className="h-7 w-7 text-primary-white" strokeWidth={1} />
+                  </div>
+                </div>
+                <h3 className="text-xl font-onyx-black mb-3 text-primary-black">Поиск</h3>
+                <p className="text-primary-black font-onyx-regular">
                   Найдите людей с нужными вам навыками
                 </p>
               </div>
-              <div className="p-6 border-2 border-primary-gray-medium rounded-lg bg-primary-white hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-onyx-black mb-3">Общение</h3>
-                <p className="text-primary-gray-text font-onyx-regular">
+              {/* Общение */}
+              <div className="px-6 pt-6 pb-20 rounded-lg hover:shadow-lg transition-shadow max-w-xs mx-auto lg:mx-0" style={{ backgroundColor: 'rgb(168, 158, 254)' }}>
+                <div className="flex items-start gap-0 mb-6">
+                  <div className="w-14 h-14 rounded-full bg-primary-black flex items-center justify-center text-primary-white font-onyx-regular text-xl">
+                    3
+                  </div>
+                  <div className="w-14 h-14 rounded-full bg-primary-black flex items-center justify-center">
+                    <MessageCircle className="h-7 w-7 text-primary-white" strokeWidth={1} />
+                  </div>
+                </div>
+                <h3 className="text-xl font-onyx-black mb-3 text-primary-black">Общение</h3>
+                <p className="text-primary-black font-onyx-regular">
                   Договаривайтесь об обмене в удобном чате
                 </p>
               </div>
-              <div className="p-6 border-2 border-primary-gray-medium rounded-lg bg-primary-white hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-onyx-black mb-3">Отзывы</h3>
-                <p className="text-primary-gray-text font-onyx-regular">
+              {/* Отзывы */}
+              <div className="px-6 pt-6 pb-20 rounded-lg hover:shadow-lg transition-shadow max-w-xs mx-auto lg:mx-0" style={{ backgroundColor: 'rgb(255, 138, 75)' }}>
+                <div className="flex items-start gap-0 mb-6">
+                  <div className="w-14 h-14 rounded-full bg-primary-black flex items-center justify-center text-primary-white font-onyx-regular text-xl">
+                    4
+                  </div>
+                  <div className="w-14 h-14 rounded-full bg-primary-black flex items-center justify-center">
+                    <Star className="h-7 w-7 text-primary-white" strokeWidth={1} />
+                  </div>
+                </div>
+                <h3 className="text-xl font-onyx-black mb-3 text-primary-black">Отзывы</h3>
+                <p className="text-primary-black font-onyx-regular">
                   Оценивайте партнеров и стройте репутацию
                 </p>
               </div>
@@ -150,7 +187,7 @@ export default function HomePageClient({ isAuthenticated }: HomePageClientProps)
       )}
 
       {/* Advantages Section */}
-      <section className="container mx-auto px-4 py-16 border-t-2 border-primary-gray-medium">
+      <section id="advantages" className="container mx-auto px-4 py-16 border-t-2 border-primary-gray-medium">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-onyx-black mb-12 text-center">
             Преимущества нашей платформы
@@ -189,7 +226,7 @@ export default function HomePageClient({ isAuthenticated }: HomePageClientProps)
       </section>
 
       {/* Examples Section */}
-      <section className="container mx-auto px-4 py-16 border-t-2 border-primary-gray-medium">
+      <section id="examples" className="container mx-auto px-4 py-16 border-t-2 border-primary-gray-medium">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-onyx-black mb-12 text-center">
             Примеры сценариев обмена
@@ -284,7 +321,7 @@ export default function HomePageClient({ isAuthenticated }: HomePageClientProps)
       </section>
 
       {/* Reviews Section */}
-      <section className="container mx-auto px-4 py-16 border-t-2 border-primary-gray-medium">
+      <section id="reviews" className="container mx-auto px-4 py-16 border-t-2 border-primary-gray-medium">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-onyx-black mb-12 text-center">
             Отзывы пользователей
@@ -352,7 +389,7 @@ export default function HomePageClient({ isAuthenticated }: HomePageClientProps)
       </section>
 
       {/* Technologies Section */}
-      <section className="container mx-auto px-4 py-16 border-t-2 border-primary-gray-medium">
+      <section id="technologies" className="container mx-auto px-4 py-16 border-t-2 border-primary-gray-medium">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-onyx-black mb-12 text-center">
             Инновационные технологии платформы
@@ -399,7 +436,7 @@ export default function HomePageClient({ isAuthenticated }: HomePageClientProps)
       </section>
 
       {/* FAQ Section */}
-      <section className="container mx-auto px-4 py-16 border-t-2 border-primary-gray-medium">
+      <section id="faq" className="container mx-auto px-4 py-16 border-t-2 border-primary-gray-medium">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-onyx-black mb-12 text-center">
             Часто задаваемые вопросы
@@ -407,6 +444,9 @@ export default function HomePageClient({ isAuthenticated }: HomePageClientProps)
           <Accordion items={faqItems} defaultOpenIndex={0} />
         </div>
       </section>
+
+      {/* Footer */}
+      {!isAuthenticated && <Footer />}
     </main>
   )
 }
