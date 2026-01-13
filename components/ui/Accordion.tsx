@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { Plus, X } from 'lucide-react'
 
 interface AccordionItemProps {
   question: string
@@ -30,11 +30,13 @@ function AccordionItem({ question, answer, isOpen, onToggle }: AccordionItemProp
         aria-expanded={isOpen}
       >
         <span className="text-lg md:text-xl font-onyx-black pr-4">{question}</span>
-        <ChevronDown
-          className={`h-6 w-6 flex-shrink-0 transition-transform duration-200 ${
-            isOpen ? 'transform rotate-180' : ''
-          }`}
-        />
+        <div className="w-8 h-8 rounded-full bg-primary-black flex items-center justify-center flex-shrink-0">
+          {isOpen ? (
+            <X className="h-5 w-5 text-primary-white transition-opacity duration-200" />
+          ) : (
+            <Plus className="h-5 w-5 text-primary-white transition-opacity duration-200" />
+          )}
+        </div>
       </button>
       {isOpen && (
         <div className="pb-6 px-4 -mx-4">

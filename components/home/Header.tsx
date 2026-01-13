@@ -16,7 +16,7 @@ export default function Header() {
   }
 
   const navItems = [
-    { id: 'features', label: 'О платформе' },
+    { id: 'features', label: 'Инструкция' },
     { id: 'advantages', label: 'Преимущества' },
     { id: 'examples', label: 'Примеры' },
     { id: 'reviews', label: 'Отзывы' },
@@ -51,16 +51,16 @@ export default function Header() {
             </nav>
 
             {/* Auth buttons - справа (скрыто на мобильных) */}
-            <div className="hidden lg:flex items-center gap-4">
+            <div className="hidden lg:flex items-center gap-4 -mr-8">
               <Link
                 href="/login"
-                className="px-6 py-3 border border-primary-black text-primary-black font-onyx-regular rounded hover:bg-primary-gray-light transition-colors text-sm"
+                className="px-5 py-3 border border-primary-black text-primary-black font-onyx-regular rounded bg-primary-white hover:bg-primary-gray-light transition-colors text-sm w-32 text-center"
               >
                 Вход
               </Link>
               <Link
                 href="/register"
-                className="px-6 py-3 bg-primary-black text-primary-white font-onyx-regular rounded hover:opacity-90 transition-opacity text-sm"
+                className="px-5 py-3 bg-primary-black text-primary-white font-onyx-regular rounded hover:opacity-90 transition-opacity text-sm w-32 text-center"
               >
                 Регистрация
               </Link>
@@ -119,14 +119,14 @@ export default function Header() {
                 <Link
                   href="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="px-6 py-4 border border-primary-black text-primary-black font-onyx-regular rounded hover:bg-primary-gray-light transition-colors text-lg text-center"
+                  className="px-5 py-3 border border-primary-black text-primary-black font-onyx-regular rounded bg-primary-white hover:bg-primary-gray-light transition-colors text-lg text-center w-full"
                 >
                   Вход
                 </Link>
                 <Link
                   href="/register"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="px-6 py-4 bg-primary-black text-primary-white font-onyx-regular rounded hover:opacity-90 transition-opacity text-lg text-center"
+                  className="px-5 py-3 bg-primary-black text-primary-white font-onyx-regular rounded hover:opacity-90 transition-opacity text-lg text-center w-full"
                 >
                   Регистрация
                 </Link>

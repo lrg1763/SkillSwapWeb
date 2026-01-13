@@ -13,7 +13,7 @@ export default function Footer() {
   }
 
   const navItems = [
-    { id: 'features', label: 'О платформе' },
+    { id: 'features', label: 'Инструкция' },
     { id: 'advantages', label: 'Преимущества' },
     { id: 'examples', label: 'Примеры' },
     { id: 'reviews', label: 'Отзывы' },
