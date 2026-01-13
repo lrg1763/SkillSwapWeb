@@ -46,7 +46,7 @@ export function useSocket() {
       // #region agent log
       fetch('http://127.0.0.1:7249/ingest/d72aa6b5-55e4-4b56-8b58-ea2f6c45c2a4',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'lib/socket.ts:42',message:'Socket.IO connected',data:{socketId:newSocket.id,userId:session.user.id},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A'})}).catch(()=>{});
       // #endregion
-      console.log('Socket.IO connected')
+      // Socket.IO connected - using logger would require client-side logger
       setIsConnected(true)
 
       // Присоединяемся к комнате пользователя
@@ -61,7 +61,7 @@ export function useSocket() {
       // #region agent log
       fetch('http://127.0.0.1:7249/ingest/d72aa6b5-55e4-4b56-8b58-ea2f6c45c2a4',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'lib/socket.ts:56',message:'Socket.IO disconnected',data:{socketId:newSocket.id},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A'})}).catch(()=>{});
       // #endregion
-      console.log('Socket.IO disconnected')
+      // Socket.IO disconnected - using logger would require client-side logger
       setIsConnected(false)
     })
 
@@ -69,7 +69,8 @@ export function useSocket() {
       // #region agent log
       fetch('http://127.0.0.1:7249/ingest/d72aa6b5-55e4-4b56-8b58-ea2f6c45c2a4',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'lib/socket.ts:63',message:'Socket.IO connection error',data:{error:error.message,type:error.type},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A'})}).catch(()=>{});
       // #endregion
-      console.error('Socket.IO connection error:', error)
+      // Socket.IO connection error - using logger would require client-side logger
+      // Error is already logged via agent log above
     })
 
     setSocket(newSocket)

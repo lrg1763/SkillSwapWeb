@@ -40,6 +40,14 @@ model User {
   blockedUsers     Block[]   @relation("Blocker")
   blockedBy        Block[]   @relation("Blocked")
 
+  @@index([rating], name: "idx_user_rating")
+  @@index([location], name: "idx_user_location")
+  @@index([isOnline], name: "idx_user_is_online")
+  @@index([lastSeen], name: "idx_user_last_seen")
+  @@index([createdAt], name: "idx_user_created_at")
+  @@index([skillsOffered], name: "idx_user_skills_offered")
+  @@index([skillsNeeded], name: "idx_user_skills_needed")
+  @@index([languages], name: "idx_user_languages")
   @@map("User")
 }
 

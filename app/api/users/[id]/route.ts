@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/db'
+import { logError } from '@/lib/error-handler'
 
 export async function GET(
   request: NextRequest,
@@ -95,7 +96,7 @@ export async function GET(
       isBlocked: !!isBlockedByCurrent,
     })
   } catch (error) {
-    console.error('Get user error:', error)
+    logError(error, { endpoint: '/api/users/[id]', method: 'GET' })
     return NextResponse.json(
       { error: 'Ошибка при получении данных пользователя' },
       { status: 500 }

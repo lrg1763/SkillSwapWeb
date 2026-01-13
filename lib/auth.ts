@@ -60,7 +60,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             email: user.email || undefined,
           }
         } catch (error) {
-          console.error('Auth error:', error)
+          const { logError } = require('./logger')
+          logError('Auth error', error)
           return null
         }
       },

@@ -73,7 +73,8 @@ export async function rateLimitRedis(
         message: !result.success ? options.message : undefined,
       }
     } catch (error) {
-      console.error('Redis rate limit error:', error)
+      const { logError } = require('../logger')
+      logError('Redis rate limit error', error)
       // Fall through to in-memory fallback
     }
   }

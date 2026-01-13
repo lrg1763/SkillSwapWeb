@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/db'
+import { logError } from '@/lib/error-handler'
 
 export async function POST(
   request: NextRequest,
@@ -80,7 +81,7 @@ export async function POST(
       )
     }
 
-    console.error('Toggle favorite error:', error)
+    logError(error, { endpoint: '/api/favorites/[userId]', method: 'POST' })
     return NextResponse.json(
       { error: 'Ошибка при изменении избранного' },
       { status: 500 }
@@ -125,7 +126,7 @@ export async function DELETE(
       message: 'Пользователь удален из избранного',
     })
   } catch (error) {
-    console.error('Delete favorite error:', error)
+    logError(error, { endpoint: '/api/favorites/[userId]', method: 'DELETE' })
     return NextResponse.json(
       { error: 'Ошибка при удалении из избранного' },
       { status: 500 }

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/db'
+import { logError } from '@/lib/error-handler'
 
 export async function GET(
   request: NextRequest,
@@ -36,25 +37,16 @@ export async function GET(
           isDeleted: false,
         },
       }),
-      prisma.message
-        .findMany({
-          where: {
-            OR: [{ senderId: userId }, { receiverId: userId }],
-            isDeleted: false,
-          },
-          select: {
-            senderId: true,
-            receiverId: true,
-          },
-        })
-        .then((messages) => {
-          const uniqueIds = new Set<number>()
-          messages.forEach((msg) => {
-            if (msg.senderId !== userId) uniqueIds.add(msg.senderId)
-            if (msg.receiverId !== userId) uniqueIds.add(msg.receiverId)
-          })
-          return uniqueIds.size
-        }),
+      // Оптимизированный запрос для подсчета уникальных собеседников
+      prisma.$queryRaw<Array<{ count: bigint }>>`
+        SELECT COUNT(DISTINCT CASE 
+          WHEN "sender_id" = ${userId} THEN "receiver_id"
+          ELSE "sender_id"
+        END) as count
+        FROM "Message"
+        WHERE ("sender_id" = ${userId} OR "receiver_id" = ${userId})
+          AND "is_deleted" = false
+      `.then((result) => Number(result[0]?.count || 0)),
     ])
 
     return NextResponse.json({
@@ -63,7 +55,7 @@ export async function GET(
       exchangesCount,
     })
   } catch (error) {
-    console.error('Get user stats error:', error)
+    logError(error, { endpoint: '/api/users/[id]/stats', method: 'GET' })
     return NextResponse.json(
       { error: 'Ошибка при получении статистики' },
       { status: 500 }

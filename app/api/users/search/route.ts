@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/db'
+import { PAGINATION } from '@/lib/constants'
+import { logError } from '@/lib/error-handler'
 
 export async function GET(request: NextRequest) {
   try {
@@ -28,7 +30,7 @@ export async function GET(request: NextRequest) {
     const sortBy = searchParams.get('sort_by') || 'created_at' // rating, created_at, username, last_seen
     const sortOrder = searchParams.get('sort_order') || 'desc' // asc, desc
     const page = parseInt(searchParams.get('page') || '1')
-    const pageSize = 20
+    const pageSize = PAGINATION.DEFAULT_PAGE_SIZE
     const skip = (page - 1) * pageSize
 
     // Получаем список заблокированных пользователей (которые заблокировали текущего или кого заблокировал текущий)
@@ -183,7 +185,7 @@ export async function GET(request: NextRequest) {
       },
     })
   } catch (error) {
-    console.error('Search users error:', error)
+    logError(error, { endpoint: '/api/users/search', method: 'GET' })
     return NextResponse.json(
       { error: 'Ошибка при поиске пользователей' },
       { status: 500 }

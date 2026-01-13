@@ -114,18 +114,32 @@ export function createErrorResponse(error: unknown, statusCode?: number) {
 }
 
 /**
- * Логирование ошибок (для production можно интегрировать с Sentry)
+ * Логирование ошибок с интеграцией Sentry
  */
 export function logError(error: unknown, context?: Record<string, unknown>) {
-  if (process.env.NODE_ENV === 'production') {
-    // Здесь можно отправить ошибку в Sentry или другой сервис мониторинга
-    console.error('Error logged:', {
-      error: error instanceof Error ? error.message : String(error),
-      stack: error instanceof Error ? error.stack : undefined,
-      context,
-      timestamp: new Date().toISOString(),
-    })
-  } else {
-    console.error('Error:', error, context)
+  const { logError: logErrorUtil } = require('./logger')
+  logErrorUtil('Error occurred', error, context)
+
+  // Отправка в Sentry (если настроен)
+  if (typeof window === 'undefined' && process.env.NEXT_PUBLIC_SENTRY_DSN) {
+    try {
+      const Sentry = require('@sentry/nextjs')
+      if (error instanceof Error) {
+        Sentry.captureException(error, {
+          contexts: {
+            custom: context,
+          },
+        })
+      } else {
+        Sentry.captureMessage(String(error), {
+          level: 'error',
+          contexts: {
+            custom: context,
+          },
+        })
+      }
+    } catch (e) {
+      // Sentry не настроен или не установлен - игнорируем
+    }
   }
 }

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/db'
+import { logError } from '@/lib/error-handler'
 
 export async function POST(
   request: NextRequest,
@@ -92,7 +93,7 @@ export async function POST(
       )
     }
 
-    console.error('Toggle block error:', error)
+    logError(error, { endpoint: '/api/blocks/[userId]', method: 'POST' })
     return NextResponse.json(
       { error: 'Ошибка при блокировке/разблокировке пользователя' },
       { status: 500 }

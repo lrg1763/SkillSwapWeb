@@ -4,16 +4,13 @@ import bcrypt from 'bcryptjs'
 import { registerSchema } from '@/lib/validations'
 import { createErrorResponse, logError } from '@/lib/error-handler'
 import { rateLimit, getIpAddress } from '@/lib/rate-limit'
+import { RATE_LIMIT } from '@/lib/constants'
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate limiting: максимум 5 регистраций с одного IP в 15 минут
+    // Rate limiting
     const ip = getIpAddress(request)
-    const limit = rateLimit(ip, {
-      windowMs: 15 * 60 * 1000, // 15 минут
-      max: 5,
-      message: 'Слишком много попыток регистрации. Попробуйте позже.',
-    })
+    const limit = rateLimit(ip, RATE_LIMIT.REGISTRATION)
 
     if (!limit.allowed) {
       return NextResponse.json(

@@ -2,6 +2,8 @@
  * Утилиты для безопасности
  */
 
+import { BRUTE_FORCE } from './constants'
+
 /**
  * Sanitize HTML - простая функция для очистки HTML от потенциально опасных тегов
  * Для production рекомендуется использовать библиотеку DOMPurify
@@ -114,8 +116,8 @@ const attemptStore: AttemptStore = {}
 
 export function checkBruteForce(
   identifier: string,
-  maxAttempts: number = 5,
-  lockoutDurationMs: number = 15 * 60 * 1000 // 15 минут
+  maxAttempts: number = BRUTE_FORCE.MAX_ATTEMPTS,
+  lockoutDurationMs: number = BRUTE_FORCE.LOCKOUT_DURATION_MS
 ): { allowed: boolean; remainingAttempts: number; lockedUntil?: number } {
   const now = Date.now()
   const key = identifier
@@ -124,7 +126,7 @@ export function checkBruteForce(
   if (!attemptStore[key] || attemptStore[key].resetTime < now) {
     attemptStore[key] = {
       count: 0,
-      resetTime: now + 60 * 60 * 1000, // Сброс через час
+      resetTime: now + BRUTE_FORCE.RESET_TIME_MS,
     }
   }
 
@@ -154,8 +156,8 @@ export function checkBruteForce(
 
 export function recordFailedAttempt(
   identifier: string,
-  maxAttempts: number = 5,
-  lockoutDurationMs: number = 15 * 60 * 1000
+  maxAttempts: number = BRUTE_FORCE.MAX_ATTEMPTS,
+  lockoutDurationMs: number = BRUTE_FORCE.LOCKOUT_DURATION_MS
 ): void {
   const now = Date.now()
   const key = identifier
@@ -163,7 +165,7 @@ export function recordFailedAttempt(
   if (!attemptStore[key] || attemptStore[key].resetTime < now) {
     attemptStore[key] = {
       count: 0,
-      resetTime: now + 60 * 60 * 1000,
+      resetTime: now + BRUTE_FORCE.RESET_TIME_MS,
     }
   }
 

@@ -3,6 +3,7 @@ import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/db'
 import bcrypt from 'bcryptjs'
 import { changePasswordSchema } from '@/lib/validations'
+import { logError } from '@/lib/error-handler'
 
 export async function PUT(request: NextRequest) {
   try {
@@ -67,7 +68,7 @@ export async function PUT(request: NextRequest) {
       )
     }
 
-    console.error('Change password error:', error)
+    logError(error, { endpoint: '/api/users/me/password', method: 'PUT' })
     return NextResponse.json(
       { error: 'Ошибка при смене пароля' },
       { status: 500 }

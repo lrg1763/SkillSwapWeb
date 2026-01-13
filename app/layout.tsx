@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
 import SessionProvider from '@/components/providers/SessionProvider'
-// import QueryProvider from '@/components/providers/QueryProvider' // Uncomment after installing @tanstack/react-query
+import QueryProvider from '@/components/providers/QueryProvider'
 import { Toaster } from 'sonner'
 import { ErrorBoundary } from '@/components/ui/ErrorBoundary'
 
@@ -56,10 +56,10 @@ export default function RootLayout({
       >
         <ErrorBoundary>
           <SessionProvider>
-            {/* <QueryProvider> */}
+            <QueryProvider>
               {children}
               <Toaster position="top-right" />
-            {/* </QueryProvider> */}
+            </QueryProvider>
           </SessionProvider>
         </ErrorBoundary>
       </body>

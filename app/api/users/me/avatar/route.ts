@@ -5,9 +5,11 @@ import { writeFile, unlink, mkdir } from 'fs/promises'
 import { existsSync } from 'fs'
 import path from 'path'
 import sharp from 'sharp'
+import { FILE_UPLOAD } from '@/lib/constants'
+import { logError } from '@/lib/error-handler'
 
 const UPLOAD_DIR = path.join(process.cwd(), 'public', 'uploads', 'avatars')
-const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB
+const MAX_FILE_SIZE = FILE_UPLOAD.MAX_AVATAR_SIZE
 const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif', 'image/webp']
 
 export async function POST(request: NextRequest) {
@@ -92,13 +94,13 @@ export async function POST(request: NextRequest) {
     const arrayBuffer = await file.arrayBuffer()
     const buffer = Buffer.from(arrayBuffer)
 
-    // Обрабатываем изображение с Sharp (сжатие до 500x500px, конвертация в WebP)
+    // Обрабатываем изображение с Sharp
     const processedImage = await sharp(buffer)
-      .resize(500, 500, {
+      .resize(FILE_UPLOAD.AVATAR_DIMENSIONS.width, FILE_UPLOAD.AVATAR_DIMENSIONS.height, {
         fit: 'cover',
         position: 'center',
       })
-      .webp({ quality: 85 })
+      .webp({ quality: FILE_UPLOAD.AVATAR_QUALITY })
       .toBuffer()
 
     // Сохраняем файл
@@ -116,7 +118,7 @@ export async function POST(request: NextRequest) {
       avatar: fileName,
     })
   } catch (error) {
-    console.error('Avatar upload error:', error)
+    logError(error, { endpoint: '/api/users/me/avatar', method: 'POST' })
     return NextResponse.json(
       { error: 'Ошибка при загрузке аватара' },
       { status: 500 }

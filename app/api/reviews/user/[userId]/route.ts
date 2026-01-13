@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/db'
+import { PAGINATION } from '@/lib/constants'
+import { logError } from '@/lib/error-handler'
 
 export async function GET(
   request: NextRequest,
@@ -19,7 +21,10 @@ export async function GET(
     const userId = parseInt(params.userId)
     const searchParams = request.nextUrl.searchParams
     const page = parseInt(searchParams.get('page') || '1')
-    const pageSize = parseInt(searchParams.get('pageSize') || '10')
+    const pageSize = Math.min(
+      parseInt(searchParams.get('pageSize') || String(PAGINATION.DEFAULT_PAGE_SIZE)),
+      PAGINATION.MAX_PAGE_SIZE
+    )
     const skip = (page - 1) * pageSize
 
     if (isNaN(userId)) {
@@ -29,11 +34,17 @@ export async function GET(
       )
     }
 
-    // Получаем отзывы
+    // Получаем отзывы (уже используем select вместо include - оптимизировано)
     const [reviews, total] = await Promise.all([
       prisma.review.findMany({
         where: { reviewedId: userId },
-        include: {
+        select: {
+          id: true,
+          reviewerId: true,
+          reviewedId: true,
+          rating: true,
+          comment: true,
+          createdAt: true,
           reviewer: {
             select: {
               id: true,
@@ -61,7 +72,7 @@ export async function GET(
       },
     })
   } catch (error) {
-    console.error('Get reviews error:', error)
+    logError(error, { endpoint: '/api/reviews/user/[userId]', method: 'GET' })
     return NextResponse.json(
       { error: 'Ошибка при получении отзывов' },
       { status: 500 }

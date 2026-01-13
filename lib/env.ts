@@ -62,7 +62,8 @@ if (typeof window === 'undefined') {
     })
   } catch (error) {
     if (error instanceof z.ZodError) {
-      console.error('❌ Environment validation failed:', error.errors)
+      const { logError } = require('./logger')
+      logError('Environment validation failed', error, { errors: error.errors })
     }
   }
 }

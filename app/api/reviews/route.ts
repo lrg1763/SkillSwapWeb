@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/db'
 import { reviewSchema } from '@/lib/validations'
+import { logError } from '@/lib/error-handler'
 
 export async function POST(request: NextRequest) {
   try {
@@ -116,7 +117,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    console.error('Create review error:', error)
+    logError(error, { endpoint: '/api/reviews', method: 'POST' })
     return NextResponse.json(
       { error: 'Ошибка при создании отзыва' },
       { status: 500 }
@@ -198,7 +199,7 @@ export async function DELETE(request: NextRequest) {
       message: 'Отзыв удален',
     })
   } catch (error) {
-    console.error('Delete review error:', error)
+    logError(error, { endpoint: '/api/reviews', method: 'DELETE' })
     return NextResponse.json(
       { error: 'Ошибка при удалении отзыва' },
       { status: 500 }

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/db'
 import { updateProfileSchema } from '@/lib/validations'
+import { logError } from '@/lib/error-handler'
 
 export async function GET(request: NextRequest) {
   try {
@@ -82,7 +83,7 @@ export async function GET(request: NextRequest) {
       },
     })
   } catch (error) {
-    console.error('Get user error:', error)
+    logError(error, { endpoint: '/api/users/me', method: 'GET' })
     return NextResponse.json(
       { error: 'Ошибка при получении данных пользователя' },
       { status: 500 }
@@ -165,7 +166,7 @@ export async function PUT(request: NextRequest) {
       )
     }
 
-    console.error('Update user error:', error)
+    logError(error, { endpoint: '/api/users/me', method: 'PUT' })
     return NextResponse.json(
       { error: 'Ошибка при обновлении профиля' },
       { status: 500 }
