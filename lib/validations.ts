@@ -49,6 +49,10 @@ export const updateProfileSchema = z.object({
   skillsNeeded: z.string().max(500, 'Слишком длинный список навыков').optional(),
   location: z.string().max(150, 'Местоположение слишком длинное').optional(),
   bio: z.string().max(1000, 'Биография слишком длинная').optional(),
+  portfolio: z.string().max(5000, 'Портфолио слишком длинное').optional(),
+  availabilitySchedule: z.record(z.any()).optional(),
+  preferredExchangeTime: z.string().max(100, 'Время слишком длинное').optional(),
+  languages: z.string().max(255, 'Список языков слишком длинный').optional(),
 })
 
 export type UpdateProfileInput = z.infer<typeof updateProfileSchema>

@@ -1,4 +1,7 @@
 import RegisterForm from '@/components/forms/RegisterForm'
+import type { Metadata } from 'next'
+
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://skillswap.com'
 
 export default function RegisterPage() {
   return (
@@ -19,7 +22,20 @@ export default function RegisterPage() {
   )
 }
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Регистрация - SkillSwap',
   description: 'Зарегистрируйтесь на платформе SkillSwap',
+  openGraph: {
+    title: 'Регистрация - SkillSwap',
+    description: 'Зарегистрируйтесь на платформе SkillSwap',
+    url: `${baseUrl}/register`,
+    siteName: 'SkillSwap',
+    locale: 'ru_RU',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Регистрация - SkillSwap',
+    description: 'Зарегистрируйтесь на платформе SkillSwap',
+  },
 }

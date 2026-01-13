@@ -130,6 +130,10 @@ export async function PUT(request: NextRequest) {
         skillsNeeded: validatedData.skillsNeeded || '',
         location: validatedData.location || '',
         bio: validatedData.bio || '',
+        portfolio: validatedData.portfolio || null,
+        availabilitySchedule: validatedData.availabilitySchedule || null,
+        preferredExchangeTime: validatedData.preferredExchangeTime || '',
+        languages: validatedData.languages || '',
       },
       select: {
         id: true,
@@ -141,6 +145,10 @@ export async function PUT(request: NextRequest) {
         avatar: true,
         rating: true,
         isPremium: true,
+        portfolio: true,
+        availabilitySchedule: true,
+        preferredExchangeTime: true,
+        languages: true,
         createdAt: true,
       },
     })

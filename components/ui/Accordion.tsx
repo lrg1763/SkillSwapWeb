@@ -26,10 +26,10 @@ function AccordionItem({ question, answer, isOpen, onToggle }: AccordionItemProp
     <div className="border-b-2 border-primary-gray-medium last:border-b-0">
       <button
         onClick={handleClick}
-        className="w-full py-6 flex items-center justify-between text-left hover:bg-primary-gray-light transition-colors rounded-lg px-4 -mx-4"
+        className="w-full py-6 flex items-center justify-between hover:bg-primary-gray-light transition-colors rounded-lg px-4"
         aria-expanded={isOpen}
       >
-        <span className="text-lg md:text-xl font-onyx-black pr-4">{question}</span>
+        <span className="text-lg md:text-xl font-onyx-black pr-4 text-center md:text-left flex-1">{question}</span>
         <div className="w-8 h-8 rounded-full bg-primary-black flex items-center justify-center flex-shrink-0">
           {isOpen ? (
             <X className="h-5 w-5 text-primary-white transition-opacity duration-200" />
@@ -39,11 +39,11 @@ function AccordionItem({ question, answer, isOpen, onToggle }: AccordionItemProp
         </div>
       </button>
       {isOpen && (
-        <div className="pb-6 px-4 -mx-4">
+        <div className="pb-6 px-4">
           {/* #region agent log */}
           {(() => { fetch('http://127.0.0.1:7250/ingest/9fb6c82f-66a0-462a-b7f7-74dfc935103b',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'Accordion.tsx:37',message:'Answer content rendering',data:{answerLength:answer.length},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{}); return null; })()}
           {/* #endregion */}
-          <p className="text-primary-gray-text font-onyx-regular leading-relaxed">
+          <p className="text-primary-gray-text font-onyx-regular leading-relaxed text-center md:text-left">
             {answer}
           </p>
         </div>

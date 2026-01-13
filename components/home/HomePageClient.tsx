@@ -68,7 +68,7 @@ export default function HomePageClient({ isAuthenticated }: HomePageClientProps)
     <main className="min-h-screen bg-primary-white">
       {!isAuthenticated && <Header />}
       {/* Hero Section */}
-      <section className="container mx-auto px-4 pt-32 md:pt-40 pb-16 md:pb-24 relative">
+      <section className="container mx-auto px-4 pt-40 md:pt-40 pb-16 md:pb-24 relative">
         <div className="max-w-4xl mx-auto text-center relative">
           {/* SVG стрелка - только на десктопе */}
           <div className="hidden lg:block absolute right-4 top-28 xl:right-8">
@@ -89,7 +89,7 @@ export default function HomePageClient({ isAuthenticated }: HomePageClientProps)
           )}
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-24">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-24">
             {isAuthenticated ? (
               <>
                 <Link
@@ -109,13 +109,13 @@ export default function HomePageClient({ isAuthenticated }: HomePageClientProps)
               <>
                 <Link
                   href="/login"
-                  className="px-5 py-3 border border-primary-black text-primary-black font-onyx-regular rounded bg-primary-white hover:bg-primary-gray-light transition-colors text-lg w-48 text-center"
+                  className="px-5 py-3 border border-primary-black text-primary-black font-onyx-regular rounded bg-primary-white hover:bg-primary-gray-light transition-colors text-lg w-48 text-center mx-auto sm:mx-0"
                 >
                   Вход
                 </Link>
                 <Link
                   href="/register"
-                  className="px-5 py-3 bg-primary-black text-primary-white font-onyx-regular rounded hover:opacity-90 transition-opacity text-lg w-48 text-center"
+                  className="px-5 py-3 bg-primary-black text-primary-white font-onyx-regular rounded hover:opacity-90 transition-opacity text-lg w-48 text-center mx-auto sm:mx-0"
                 >
                   Регистрация
                 </Link>
@@ -474,73 +474,73 @@ export default function HomePageClient({ isAuthenticated }: HomePageClientProps)
             Отзывы пользователей
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="p-6 border-2 border-primary-gray-medium rounded bg-primary-white">
+            <div className="p-6 rounded" style={{ backgroundColor: 'rgb(30, 30, 30)' }}>
               <div className="flex items-center gap-1 mb-3">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-5 w-5 fill-primary-green-light text-primary-green-light" />
                 ))}
               </div>
-              <p className="text-primary-gray-text font-onyx-regular mb-4">
+              <p className="text-primary-white font-onyx-regular mb-4">
                 "Нашла носителя языка за день. Удобно, что отзывы и рейтинг сразу видны."
               </p>
-              <p className="text-sm font-onyx-black">Мария, студентка</p>
+              <p className="text-sm font-onyx-black text-primary-white">Мария, студентка</p>
             </div>
-            <div className="p-6 border-2 border-primary-gray-medium rounded bg-primary-white">
+            <div className="p-6 rounded" style={{ backgroundColor: 'rgb(30, 30, 30)' }}>
               <div className="flex items-center gap-1 mb-3">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-5 w-5 fill-primary-green-light text-primary-green-light" />
                 ))}
               </div>
-              <p className="text-primary-gray-text font-onyx-regular mb-4">
+              <p className="text-primary-white font-onyx-regular mb-4">
                 "Обменял настройку CRM на брендбук. Сервис экономит время и деньги."
               </p>
-              <p className="text-sm font-onyx-black">Алексей, предприниматель</p>
+              <p className="text-sm font-onyx-black text-primary-white">Алексей, предприниматель</p>
             </div>
-            <div className="p-6 border-2 border-primary-gray-medium rounded bg-primary-white">
+            <div className="p-6 rounded" style={{ backgroundColor: 'rgb(30, 30, 30)' }}>
               <div className="flex items-center gap-1 mb-3">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-5 w-5 fill-primary-green-light text-primary-green-light" />
                 ))}
               </div>
-              <p className="text-primary-gray-text font-onyx-regular mb-4">
+              <p className="text-primary-white font-onyx-regular mb-4">
                 "За неделю освоила монтаж, партнер получил советы по питанию. Честный обмен."
               </p>
-              <p className="text-sm font-onyx-black">Елена, нутрициолог</p>
+              <p className="text-sm font-onyx-black text-primary-white">Елена, нутрициолог</p>
             </div>
-            <div className="p-6 border-2 border-primary-gray-medium rounded bg-primary-white">
+            <div className="p-6 rounded" style={{ backgroundColor: 'rgb(30, 30, 30)' }}>
               <div className="flex items-center gap-1 mb-3">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-5 w-5 fill-primary-green-light text-primary-green-light" />
                 ))}
               </div>
-              <p className="text-primary-gray-text font-onyx-regular mb-4">
+              <p className="text-primary-white font-onyx-regular mb-4">
                 "Поменялся навыками с фотографом: я научил его работать с графикой, он дал мне уроки
                 по съемке. Взаимовыгодно!"
               </p>
-              <p className="text-sm font-onyx-black">Дмитрий, графический дизайнер</p>
+              <p className="text-sm font-onyx-black text-primary-white">Дмитрий, графический дизайнер</p>
             </div>
-            <div className="p-6 border-2 border-primary-gray-medium rounded bg-primary-white">
+            <div className="p-6 rounded" style={{ backgroundColor: 'rgb(30, 30, 30)' }}>
               <div className="flex items-center gap-1 mb-3">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-5 w-5 fill-primary-green-light text-primary-green-light" />
                 ))}
               </div>
-              <p className="text-primary-gray-text font-onyx-regular mb-4">
+              <p className="text-primary-white font-onyx-regular mb-4">
                 "Отличная платформа для начинающих! Получил консультации по маркетингу в обмен на
                 помощь с настройкой сайта. Все быстро и профессионально."
               </p>
-              <p className="text-sm font-onyx-black">Сергей, веб-разработчик</p>
+              <p className="text-sm font-onyx-black text-primary-white">Сергей, веб-разработчик</p>
             </div>
-            <div className="p-6 border-2 border-primary-gray-medium rounded bg-primary-white">
+            <div className="p-6 rounded" style={{ backgroundColor: 'rgb(30, 30, 30)' }}>
               <div className="flex items-center gap-1 mb-3">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-5 w-5 fill-primary-green-light text-primary-green-light" />
                 ))}
               </div>
-              <p className="text-primary-gray-text font-onyx-regular mb-4">
+              <p className="text-primary-white font-onyx-regular mb-4">
                 "Быстро нашел партнера для обмена навыками программирования. Платформа простая и удобная, рекомендую!"
               </p>
-              <p className="text-sm font-onyx-black">Игорь, разработчик</p>
+              <p className="text-sm font-onyx-black text-primary-white">Игорь, разработчик</p>
             </div>
           </div>
         </div>

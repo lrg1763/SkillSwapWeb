@@ -2,6 +2,7 @@ import MatchPageClient from './MatchPageClient'
 import { auth } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import { prisma } from '@/lib/db'
+import type { Metadata } from 'next'
 
 async function getUserData(userId: number, currentUserId: number) {
   // Проверка блокировки
@@ -214,7 +215,68 @@ export default async function MatchPage({
   return <MatchPageClient user={user} currentUserId={currentUserId} />
 }
 
-export const metadata = {
-  title: 'Профиль пользователя - SkillSwap',
-  description: 'Просмотр профиля пользователя',
+export async function generateMetadata({
+  params,
+}: {
+  params: { userId: string }
+}): Promise<Metadata> {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://skillswap.com'
+  
+  try {
+    const userId = parseInt(params.userId)
+    if (isNaN(userId)) {
+      return {
+        title: 'Профиль пользователя - SkillSwap',
+        description: 'Просмотр профиля пользователя',
+      }
+    }
+
+    const { prisma } = await import('@/lib/db')
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        username: true,
+        bio: true,
+        avatar: true,
+        skillsOffered: true,
+        rating: true,
+      },
+    })
+
+    if (!user) {
+      return {
+        title: 'Профиль пользователя - SkillSwap',
+        description: 'Просмотр профиля пользователя',
+      }
+    }
+
+    const title = `Профиль ${user.username} - SkillSwap`
+    const description = user.bio || `Профиль пользователя ${user.username} на платформе SkillSwap`
+    const image = user.avatar ? `${baseUrl}${user.avatar}` : undefined
+
+    return {
+      title,
+      description,
+      openGraph: {
+        title,
+        description,
+        url: `${baseUrl}/match/${userId}`,
+        siteName: 'SkillSwap',
+        locale: 'ru_RU',
+        type: 'profile',
+        images: image ? [{ url: image }] : undefined,
+      },
+      twitter: {
+        card: 'summary',
+        title,
+        description,
+        images: image ? [image] : undefined,
+      },
+    }
+  } catch (error) {
+    return {
+      title: 'Профиль пользователя - SkillSwap',
+      description: 'Просмотр профиля пользователя',
+    }
+  }
 }

@@ -115,18 +115,18 @@ export default function Header() {
                 ))}
               </div>
               {/* Auth buttons в мобильном меню */}
-              <div className="flex flex-col gap-4 pt-8 border-t-2 border-primary-gray-medium">
+              <div className="flex flex-col gap-4 pt-8 border-t-2 border-primary-gray-medium items-center">
                 <Link
                   href="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="px-5 py-3 border border-primary-black text-primary-black font-onyx-regular rounded bg-primary-white hover:bg-primary-gray-light transition-colors text-lg text-center w-full"
+                  className="px-5 py-3 border border-primary-black text-primary-black font-onyx-regular rounded bg-primary-white hover:bg-primary-gray-light transition-colors text-lg text-center w-full max-w-xs"
                 >
                   Вход
                 </Link>
                 <Link
                   href="/register"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="px-5 py-3 bg-primary-black text-primary-white font-onyx-regular rounded hover:opacity-90 transition-opacity text-lg text-center w-full"
+                  className="px-5 py-3 bg-primary-black text-primary-white font-onyx-regular rounded hover:opacity-90 transition-opacity text-lg text-center w-full max-w-xs"
                 >
                   Регистрация
                 </Link>

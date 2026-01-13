@@ -33,6 +33,12 @@ function SearchPageContent() {
   const [query, setQuery] = useState(searchParams.get('query') || '')
   const [minRating, setMinRating] = useState(searchParams.get('min_rating') || '0')
   const [location, setLocation] = useState(searchParams.get('location') || '')
+  const [skillsOffered, setSkillsOffered] = useState(searchParams.get('skills_offered') || '')
+  const [skillsNeeded, setSkillsNeeded] = useState(searchParams.get('skills_needed') || '')
+  const [languages, setLanguages] = useState(searchParams.get('languages') || '')
+  const [isOnline, setIsOnline] = useState(searchParams.get('is_online') || '')
+  const [dateFrom, setDateFrom] = useState(searchParams.get('date_from') || '')
+  const [dateTo, setDateTo] = useState(searchParams.get('date_to') || '')
   const [sortBy, setSortBy] = useState(searchParams.get('sort_by') || 'created_at')
   const [sortOrder, setSortOrder] = useState(searchParams.get('sort_order') || 'desc')
   const [showFilters, setShowFilters] = useState(false)
@@ -47,6 +53,12 @@ function SearchPageContent() {
     filters?: {
       minRating?: string
       location?: string
+      skillsOffered?: string
+      skillsNeeded?: string
+      languages?: string
+      isOnline?: string
+      dateFrom?: string
+      dateTo?: string
       sortBy?: string
       sortOrder?: string
     }
@@ -62,6 +74,24 @@ function SearchPageContent() {
       }
       if (filters?.location?.trim()) {
         params.set('location', filters.location)
+      }
+      if (filters?.skillsOffered?.trim()) {
+        params.set('skills_offered', filters.skillsOffered)
+      }
+      if (filters?.skillsNeeded?.trim()) {
+        params.set('skills_needed', filters.skillsNeeded)
+      }
+      if (filters?.languages?.trim()) {
+        params.set('languages', filters.languages)
+      }
+      if (filters?.isOnline) {
+        params.set('is_online', filters.isOnline)
+      }
+      if (filters?.dateFrom) {
+        params.set('date_from', filters.dateFrom)
+      }
+      if (filters?.dateTo) {
+        params.set('date_to', filters.dateTo)
       }
       params.set('sort_by', filters?.sortBy || sortBy)
       params.set('sort_order', filters?.sortOrder || sortOrder)
@@ -174,22 +204,29 @@ function SearchPageContent() {
 
             {/* Minimum Rating */}
             <div>
-              <label className="block text-sm font-onyx-black mb-2 text-primary-black">
-                Минимальный рейтинг: {minRating === '0' ? 'Любой' : minRating}
+              <label
+                htmlFor="minRating"
+                className="block text-sm font-onyx-black mb-2 text-primary-black"
+              >
+                Минимальный рейтинг
               </label>
-              <input
-                type="range"
-                min="0"
-                max="5"
-                step="0.5"
+              <select
+                id="minRating"
                 value={minRating}
                 onChange={(e) => setMinRating(e.target.value)}
-                className="w-full"
-              />
-              <div className="flex justify-between text-xs text-primary-gray-text mt-1">
-                <span>0</span>
-                <span>5</span>
-              </div>
+                className="w-full px-4 py-3 border-2 border-primary-black rounded-lg bg-primary-white text-primary-black font-onyx-regular focus:outline-none focus:ring-2 focus:ring-primary-green-light focus:border-transparent"
+              >
+                <option value="0">Любой</option>
+                <option value="1">1.0 и выше</option>
+                <option value="1.5">1.5 и выше</option>
+                <option value="2">2.0 и выше</option>
+                <option value="2.5">2.5 и выше</option>
+                <option value="3">3.0 и выше</option>
+                <option value="3.5">3.5 и выше</option>
+                <option value="4">4.0 и выше</option>
+                <option value="4.5">4.5 и выше</option>
+                <option value="5">5.0</option>
+              </select>
             </div>
 
             {/* Location */}

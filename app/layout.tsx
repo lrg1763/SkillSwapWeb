@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
 import SessionProvider from '@/components/providers/SessionProvider'
+// import QueryProvider from '@/components/providers/QueryProvider' // Uncomment after installing @tanstack/react-query
 import { Toaster } from 'sonner'
-import { ErrorBoundary } from '@/components/ErrorBoundary'
+import { ErrorBoundary } from '@/components/ui/ErrorBoundary'
 
 const onyxSemiMonoRegular = localFont({
   src: '../public/fonts/OnyxSemiMono-Regular.otf',
@@ -55,8 +56,10 @@ export default function RootLayout({
       >
         <ErrorBoundary>
           <SessionProvider>
-            {children}
-            <Toaster position="top-right" />
+            {/* <QueryProvider> */}
+              {children}
+              <Toaster position="top-right" />
+            {/* </QueryProvider> */}
           </SessionProvider>
         </ErrorBoundary>
       </body>

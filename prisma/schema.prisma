@@ -11,20 +11,24 @@ datasource db {
 }
 
 model User {
-  id           Int       @id @default(autoincrement())
-  username     String    @unique @db.VarChar(150)
-  password     String    @db.VarChar(255)
-  skillsOffered String   @default("") @map("skills_offered")
-  skillsNeeded  String   @default("") @map("skills_needed")
-  location     String    @default("") @db.VarChar(150)
-  bio          String    @default("")
-  avatar       String    @default("") @db.VarChar(255)
-  rating       Decimal   @default(0.0) @db.Decimal(3, 1)
-  isPremium    Boolean   @default(false) @map("is_premium")
-  lastSeen     DateTime  @default(now()) @map("last_seen") @db.Timestamp
-  isOnline     Boolean   @default(false) @map("is_online")
-  email        String?   @unique @db.VarChar(255)
-  createdAt    DateTime  @default(now()) @map("created_at") @db.Timestamp
+  id                  Int       @id @default(autoincrement())
+  username            String    @unique @db.VarChar(150)
+  password            String    @db.VarChar(255)
+  skillsOffered       String    @default("") @map("skills_offered")
+  skillsNeeded        String    @default("") @map("skills_needed")
+  location            String    @default("") @db.VarChar(150)
+  bio                 String    @default("")
+  avatar              String    @default("") @db.VarChar(255)
+  rating              Decimal   @default(0.0) @db.Decimal(3, 1)
+  isPremium           Boolean   @default(false) @map("is_premium")
+  lastSeen            DateTime  @default(now()) @map("last_seen") @db.Timestamp
+  isOnline            Boolean   @default(false) @map("is_online")
+  email               String?   @unique @db.VarChar(255)
+  portfolio           String?   @db.Text
+  availabilitySchedule Json?    @map("availability_schedule")
+  preferredExchangeTime String? @default("") @map("preferred_exchange_time") @db.VarChar(100)
+  languages           String    @default("") @db.VarChar(255)
+  createdAt           DateTime  @default(now()) @map("created_at") @db.Timestamp
 
   // Relations
   sentMessages     Message[] @relation("SentMessages")
