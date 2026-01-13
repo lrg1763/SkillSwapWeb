@@ -3,8 +3,8 @@
 Платформа для peer-to-peer обмена навыками и услугами без использования денег. Современное веб-приложение с реальным временем для связи между пользователями.
 
 ![Next.js](https://img.shields.io/badge/Next.js-14+-black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.5-black)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-black)
 ![Socket.IO](https://img.shields.io/badge/Socket.IO-4.7-black)
 
 ##  Особенности
