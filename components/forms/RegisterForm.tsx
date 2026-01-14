@@ -23,9 +23,15 @@ export default function RegisterForm() {
 
   const onSubmit = async (data: RegisterInput) => {
     try {
+      // #region agent log
+      fetch('http://127.0.0.1:7252/ingest/04941659-eed6-4b7f-aa82-90dc2d91e403',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'RegisterForm.tsx:24',message:'Form submission started',data:{username:data.username,passwordLength:data.password.length,confirmPasswordLength:data.confirmPassword.length},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
+      // #endregion
       setError(null)
       setIsLoading(true)
 
+      // #region agent log
+      fetch('http://127.0.0.1:7252/ingest/04941659-eed6-4b7f-aa82-90dc2d91e403',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'RegisterForm.tsx:29',message:'Fetch request initiated',data:{url:'/api/auth/register',method:'POST'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'G'})}).catch(()=>{});
+      // #endregion
       const response = await fetch('/api/auth/register', {
         method: 'POST',
         headers: {
@@ -38,11 +44,26 @@ export default function RegisterForm() {
         }),
       })
 
+      // #region agent log
+      console.error('[CLIENT DEBUG] Response received:', {status:response.status,statusText:response.statusText,ok:response.ok})
+      fetch('http://127.0.0.1:7252/ingest/04941659-eed6-4b7f-aa82-90dc2d91e403',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'RegisterForm.tsx:41',message:'Response received',data:{status:response.status,statusText:response.statusText,ok:response.ok},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'F'})}).catch(()=>{});
+      // #endregion
       const result = await response.json()
 
+      // #region agent log
+      console.error('[CLIENT DEBUG] Response parsed:', {hasError:!!result.error,hasDetails:!!result.details,error:result.error,detailsCount:result.details?.length,fullResult:result})
+      fetch('http://127.0.0.1:7252/ingest/04941659-eed6-4b7f-aa82-90dc2d91e403',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'RegisterForm.tsx:43',message:'Response parsed',data:{hasError:!!result.error,hasDetails:!!result.details,error:result.error,detailsCount:result.details?.length,fullResult:result},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'F'})}).catch(()=>{});
+      // #endregion
+
       if (!response.ok) {
+        // #region agent log
+        fetch('http://127.0.0.1:7252/ingest/04941659-eed6-4b7f-aa82-90dc2d91e403',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'RegisterForm.tsx:44',message:'Response not OK - handling error',data:{status:response.status,error:result.error,hasDetails:!!result.details},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
+        // #endregion
         if (result.details) {
           // Ошибки валидации Zod
+          // #region agent log
+          fetch('http://127.0.0.1:7252/ingest/04941659-eed6-4b7f-aa82-90dc2d91e403',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'RegisterForm.tsx:46',message:'Zod validation errors detected',data:{detailsCount:result.details.length,details:result.details},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
+          // #endregion
           result.details.forEach((err: any) => {
             if (err.path) {
               setFieldError(err.path[0] as keyof RegisterInput, {
@@ -51,6 +72,9 @@ export default function RegisterForm() {
             }
           })
         } else {
+          // #region agent log
+          fetch('http://127.0.0.1:7252/ingest/04941659-eed6-4b7f-aa82-90dc2d91e403',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'RegisterForm.tsx:54',message:'Setting generic error message',data:{error:result.error},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'F'})}).catch(()=>{});
+          // #endregion
           setError(result.error || 'Произошла ошибка при регистрации')
         }
         setIsLoading(false)
@@ -58,8 +82,14 @@ export default function RegisterForm() {
       }
 
       // Успешная регистрация - редирект на страницу входа
+      // #region agent log
+      fetch('http://127.0.0.1:7252/ingest/04941659-eed6-4b7f-aa82-90dc2d91e403',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'RegisterForm.tsx:61',message:'Registration successful - redirecting',data:{},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:''})}).catch(()=>{});
+      // #endregion
       router.push('/login?registered=true')
     } catch (err) {
+      // #region agent log
+      fetch('http://127.0.0.1:7252/ingest/04941659-eed6-4b7f-aa82-90dc2d91e403',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'RegisterForm.tsx:63',message:'Exception caught in onSubmit',data:{errorType:err instanceof Error ? err.constructor.name : typeof err,errorMessage:err instanceof Error ? err.message : String(err)},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'G'})}).catch(()=>{});
+      // #endregion
       console.error('Register error:', err)
       setError('Произошла ошибка при регистрации')
       setIsLoading(false)
